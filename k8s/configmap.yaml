@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app1-config
+data:
+  config: |
+    greeting: Sup
