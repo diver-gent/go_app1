@@ -1,30 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1
+  name: demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app1
+      app: demo
   template:
     metadata:
       labels:
-        app: app1
+        app: demo
     spec:
       containers:
-        - name:  app1
-          image: gotodengo89/go_app1
+        - name:  demo
+          image: cloudnatived/demo:hello-config-env
           ports:
-            - containerPort: 7777
-          volumeMounts:
-          - mountPath: /config/
-            name: app1-config-volume
-            readOnly: true
-      volumes:
-      - name: app1-config-volume
-        configMap:
-          name: app1-config
-          items:
-          - key: config
-            path: app1.yaml
+            - containerPort: 8888
+          env:
+            - name: GREETING
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-config
+                  key: greeting
