@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: go_app1
+      app: app1
   template:
     metadata:
       labels:
-        app: go_app1
+        app: app1
     spec:
       containers:
         - name:  go_app1
