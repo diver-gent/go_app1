@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: go_app1
+  name: app1
 spec:
   replicas: 1
   selector:
@@ -21,5 +21,5 @@ spec:
             - name: GREET
               valueFrom:
                 configMapKeyRef:
-                  name: go_app1-config
+                  name: app1-config
                   key: greeting
