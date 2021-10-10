@@ -13,7 +13,7 @@ spec:
         app: app1
     spec:
       containers:
-        - name:  go_app1
+        - name:  go-app1
           image: gotodengo89/go_app1
           ports:
             - containerPort: 6666
@@ -23,3 +23,16 @@ spec:
                 configMapKeyRef:
                   name: app1-config
                   key: greeting
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 6666
+            initialDelaySeconds: 3
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 6666
+            initialDelaySeconds: 3
+            periodSeconds: 3
+
